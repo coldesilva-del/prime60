@@ -12,7 +12,10 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "db:push": "supabase db push",
-    "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > src/lib/supabase/types.ts"
+    "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > src/lib/supabase/types.ts",
+    "db:rls-test": "tsx scripts/rls-test.ts",
+    "db:seed-colin": "tsx scripts/seed-colin.ts",
+    "icons": "node scripts/make-icons.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -26,6 +29,7 @@
     "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
     "serwist": "^9.5.12",
     "shadcn": "^4.21.0",
     "tailwind-merge": "^3.7.0",
