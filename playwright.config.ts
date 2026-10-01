@@ -14,7 +14,8 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
-    { name: "iphone-13", use: { ...devices["iPhone 13"] } },
+    // iPhone 13 viewport, touch and user agent, run on Chromium (WebKit is not installed on Windows dev machines).
+    { name: "iphone-13", use: { ...devices["iPhone 13"], browserName: "chromium" } },
     { name: "desktop-chrome", use: { ...devices["Desktop Chrome"] } },
   ],
 });
