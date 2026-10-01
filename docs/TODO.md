@@ -8,7 +8,7 @@ Updated: 1 October 2026. Check this daily. Claude keeps it current; Colin ticks 
 - [ ] Paste the publishable key (Project Settings → API Keys) to Claude
 - [ ] In the Terminal panel: `npx supabase login` then `npx supabase link --project-ref yrvhyvenovctbzhqftre` (enter DB password when asked)
 - [ ] Create an empty private GitHub repository named `prime60` under your account. Then tell Claude the URL.
-- [ ] Authorise the Supabase connector in claude.ai connector settings (only needed once the Supabase project exists).
+- [ ] In Supabase Authentication settings: Site URL https://prime60.colindesilva.com; Redirect URLs http://localhost:3000/** and https://prime60.colindesilva.com/**; custom SMTP via Resend (see docs/08-setup.md section 5)
 - [ ] Create a Railway service for `prime60` connected to the GitHub repo (Claude will give exact steps when the repo has code).
 - [ ] Add the DNS record for `prime60.colindesilva.com` pointing at Railway (Claude will give the exact record).
 - [ ] Choose a Resend sending address for auth emails, for example `prime60@colindesilva.com`, and confirm the domain is verified in Resend.
@@ -19,22 +19,22 @@ Updated: 1 October 2026. Check this daily. Claude keeps it current; Colin ticks 
 
 ### Phase 1 — Documents (approved scope)
 - [x] Discovery summary approved
-- [ ] 01 PRD
-- [ ] 02 Information architecture
-- [ ] 03 User flows
-- [ ] 04 Data model and RLS
-- [ ] 05 Design system
-- [ ] 06 Wireframe structure
+- [x] 01 PRD
+- [x] 02 Information architecture (user flows included)
+- [x] 04 Data model and RLS
+- [x] 05 Design system
+- [x] 06 Wireframe structure
+- [x] 07 Engineering conventions, 08 Setup guide, 09 Deployment runbook
 
 ### Phase 2 — Foundation
-- [ ] Scaffold Next.js, TypeScript, Tailwind, shadcn/ui, Supabase SSR
-- [ ] Database migrations and RLS policies, with tests
-- [ ] Auth: sign up, verify, sign in, magic link, reset, sign out
+- [x] Scaffold Next.js, TypeScript, Tailwind, shadcn/ui, Supabase SSR
+- [x] Database migrations and RLS policies written (push pending Colin's CLI login); RLS tests pending
+- [x] Auth: sign up, verify, sign in, magic link, reset, sign out (untested against live Supabase)
 - [ ] Account: profile, delete account, export data
 - [ ] Legal pages: privacy, terms
 - [ ] Founding 100 assignment
 - [ ] Mailchimp consent hook (behind env flag until keys exist)
-- [ ] App shell: five-tab navigation, light and dark mode, PWA manifest and service worker
+- [x] App shell: five-tab navigation, light and dark mode, PWA manifest, icons and service worker
 
 ### Phase 3 — Onboarding and Today
 - [ ] Onboarding wizard (resumable)
@@ -43,8 +43,8 @@ Updated: 1 October 2026. Check this daily. Claude keeps it current; Colin ticks 
 ### Phase 4 — Daily loop
 - [ ] Morning check-in
 - [ ] Evening check-in
-- [ ] Prime Score engine with tests
-- [ ] Prime Trajectory with tests
+- [x] Prime Score engine with tests
+- [x] Prime Trajectory with tests
 
 ### Phase 5 — Behaviour engine
 - [ ] Pattern library, five in focus, one-tap log, full log
