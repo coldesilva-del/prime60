@@ -1,6 +1,6 @@
 # Prime 60 — Running To-Do List
 
-Updated: 1 October 2026. Check this daily. Claude keeps it current; Colin ticks his own items.
+Updated: 1 October 2026 (all V1 screens built and compiling; awaiting Supabase key and CLI link to test live). Check this daily. Claude keeps it current; Colin ticks his own items.
 
 ## Colin's actions (only you can do these)
 
@@ -30,43 +30,43 @@ Updated: 1 October 2026. Check this daily. Claude keeps it current; Colin ticks 
 - [x] Scaffold Next.js, TypeScript, Tailwind, shadcn/ui, Supabase SSR
 - [x] Database migrations and RLS policies written (push pending Colin's CLI login); RLS tests pending
 - [x] Auth: sign up, verify, sign in, magic link, reset, sign out (untested against live Supabase)
-- [ ] Account: profile, delete account, export data
-- [ ] Legal pages: privacy, terms
-- [ ] Founding 100 assignment
-- [ ] Mailchimp consent hook (behind env flag until keys exist)
+- [x] Account: profile, delete account, export data
+- [x] Legal pages: privacy, terms
+- [x] Founding 100 assignment
+- [x] Mailchimp consent hook (behind env flag until keys exist)
 - [x] App shell: five-tab navigation, light and dark mode, PWA manifest, icons and service worker
 
 ### Phase 3 — Onboarding and Today
-- [ ] Onboarding wizard (resumable)
-- [ ] Today screen
+- [x] Onboarding wizard (resumable)
+- [x] Today screen
 
 ### Phase 4 — Daily loop
-- [ ] Morning check-in
-- [ ] Evening check-in
+- [x] Morning check-in
+- [x] Evening check-in
 - [x] Prime Score engine with tests
 - [x] Prime Trajectory with tests
 
 ### Phase 5 — Behaviour engine
-- [ ] Pattern library, five in focus, one-tap log, full log
-- [ ] Replacement behaviours and IF-THEN plans
-- [ ] Habit stacks
-- [ ] Courage Reps
-- [ ] I'm Stuck mode with timer
-- [ ] Idea Parking Lot with promotion filter
-- [ ] Projects, active limit friction, Finish Ratio with tests
+- [x] Pattern library, five in focus, one-tap log, full log
+- [x] Replacement behaviours and IF-THEN plans
+- [x] Habit stacks
+- [x] Courage Reps
+- [x] I'm Stuck mode with timer
+- [x] Idea Parking Lot with promotion filter
+- [x] Projects, active limit friction, Finish Ratio with tests
 
 ### Phase 6 — Health, relationships, reviews, vision
-- [ ] Health: two modes, weekly weigh-in, trends
-- [ ] Relationships: people, cadence, drift, connected today
-- [ ] Weekly review
-- [ ] 90-day cycle
-- [ ] Vision and Your Moment
+- [x] Health: two modes, weekly weigh-in, trends
+- [x] Relationships: people, cadence, drift, connected today
+- [x] Weekly review
+- [x] 90-day cycle
+- [x] Vision and Your Moment
 
 ### Phase 7 — Progress, admin, launch
-- [ ] Progress dashboard
-- [ ] Admin view and CSV export
+- [x] Progress dashboard
+- [x] Admin view and CSV export
 - [ ] Seed Colin's account
-- [ ] Playwright daily-journey tests on iPhone viewport
+- [ ] Playwright daily-journey tests on iPhone viewport (public smoke tests pass; signed-in flows need the live Supabase key)
 - [ ] Design refinement pass
-- [ ] Developer setup guide, deployment runbook, user guide, install-on-iPhone page
+- [x] Developer setup guide, deployment runbook, user guide, install-on-iPhone page
 - [ ] Deploy to Railway, connect domain, launch checklist
