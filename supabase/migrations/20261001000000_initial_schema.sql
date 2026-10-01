@@ -20,21 +20,6 @@ begin
 end;
 $$;
 
-create or replace function private.is_admin()
-returns boolean
-language sql
-security definer
-stable
-set search_path = ''
-as $$
-  select exists (
-    select 1 from public.profiles
-    where user_id = (select auth.uid()) and is_admin
-  );
-$$;
-revoke execute on function private.is_admin() from public, anon;
-grant execute on function private.is_admin() to authenticated;
-
 -- ---------------------------------------------------------------------------
 -- Profiles
 -- ---------------------------------------------------------------------------
@@ -65,6 +50,22 @@ create table public.profiles (
 
 create trigger profiles_updated_at before update on public.profiles
   for each row execute function private.set_updated_at();
+
+-- Defined after profiles because SQL-language bodies are validated at creation.
+create or replace function private.is_admin()
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select exists (
+    select 1 from public.profiles
+    where user_id = (select auth.uid()) and is_admin
+  );
+$$;
+revoke execute on function private.is_admin() from public, anon;
+grant execute on function private.is_admin() to authenticated;
 
 -- Create a profile row for every new auth user. Marketing consent and first
 -- name arrive in raw_user_meta_data from the sign-up form; they are copied once
