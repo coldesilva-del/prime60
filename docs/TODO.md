@@ -70,4 +70,5 @@ Updated: 1 October 2026 (all V1 screens built and compiling; awaiting Supabase k
 - [ ] Playwright daily-journey tests on iPhone viewport (public smoke tests pass; signed-in flows need the live Supabase key)
 - [ ] Design refinement pass
 - [x] Developer setup guide, deployment runbook, user guide, install-on-iPhone page
+- [ ] Reset the Founding 100 counter before launch: test accounts consumed numbers. Run `npx supabase db query "update public.founding_counter set claimed = 0; update public.profiles set plan = 'early_access', founding_number = null where founding_number is not null;"` after deleting test users, then re-verify Colin so he gets number 1
 - [ ] Deploy to Railway, connect domain, launch checklist
