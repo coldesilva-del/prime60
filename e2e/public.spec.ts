@@ -23,15 +23,14 @@ test.describe("public pages", () => {
 
   test("every control on the sign-in form is at least 44px tall", async ({ page }) => {
     await page.goto("/sign-in");
-    const controls = page.locator("input, button, a[href]");
+    // Scoped to the form so the Next.js dev overlay button is not measured.
+    const controls = page.locator("form").locator("input, button");
     const count = await controls.count();
+    expect(count).toBeGreaterThan(0);
     for (let i = 0; i < count; i++) {
       const box = await controls.nth(i).boundingBox();
       if (!box) continue;
-      // Inline text links in prose are exempt; form controls and buttons are not.
-      const tag = await controls.nth(i).evaluate((el) => el.tagName.toLowerCase());
-      if (tag === "a") continue;
-      expect(box.height, `control ${i} (${tag}) height`).toBeGreaterThanOrEqual(44);
+      expect(box.height, `control ${i} height`).toBeGreaterThanOrEqual(44);
     }
   });
 });

@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { getUserId } from "@/lib/supabase/server";
 
 export default async function LandingPage() {
@@ -22,12 +21,12 @@ export default async function LandingPage() {
         </p>
       </div>
       <div className="space-y-3">
-        <Button size="full" render={<Link href="/sign-up" />}>
+        <ButtonLink href="/sign-up" size="full">
           Create your account
-        </Button>
-        <Button size="full" variant="secondary" render={<Link href="/sign-in" />}>
+        </ButtonLink>
+        <ButtonLink href="/sign-in" size="full" variant="secondary">
           Sign in
-        </Button>
+        </ButtonLink>
       </div>
       <p className="text-sm text-ink-faint">
         The first 100 members are founding members, free for life.

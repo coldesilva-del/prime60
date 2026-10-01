@@ -1,3 +1,5 @@
+import * as React from "react";
+import Link from "next/link";
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "cn";
@@ -53,4 +55,14 @@ function Button({
   );
 }
 
-export { Button, buttonVariants };
+/** A real link styled as a button. Use for navigation so assistive tech hears "link". */
+function ButtonLink({
+  className,
+  variant = "default",
+  size = "default",
+  ...props
+}: React.ComponentProps<typeof Link> & VariantProps<typeof buttonVariants>) {
+  return <Link data-slot="button-link" className={cn(buttonVariants({ variant, size, className }))} {...props} />;
+}
+
+export { Button, ButtonLink, buttonVariants };
