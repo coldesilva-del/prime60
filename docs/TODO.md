@@ -1,13 +1,13 @@
 # Prime 60 — Running To-Do List
 
-Updated: 1 October 2026 (all V1 screens built and compiling; awaiting Supabase key and CLI link to test live). Check this daily. Claude keeps it current; Colin ticks his own items.
+Updated: 1 October 2026 (V1 built, database live, full daily journey verified in the browser with a test account). Check this daily. Claude keeps it current; Colin ticks his own items.
 
 ## Colin's actions (only you can do these)
 
 - [x] Supabase project created: Prime60, Sydney, ref yrvhyvenovctbzhqftre, URL https://yrvhyvenovctbzhqftre.supabase.co (1 Oct 2026)
 - [x] Publishable key received and placed in .env.local (1 Oct 2026)
 - [ ] BEFORE LAUNCH: the secret key was pasted in chat. In Supabase, Project Settings → API Keys → Secret, generate a new secret key, delete the old one, and enter the new value yourself into Railway (SUPABASE_SERVICE_ROLE_KEY) and version-10-os/.env.local. Never paste it in chat.
-- [ ] In the Terminal panel: `npx supabase login` then `npx supabase link --project-ref yrvhyvenovctbzhqftre` (enter DB password when asked)
+- [x] Supabase CLI logged in and linked (1 Oct 2026). Schema, content and policy migrations applied. RLS isolation test passes. Advisors clean.
 - [x] GitHub repository created and code pushed: https://github.com/coldesilva-del/prime60 (1 Oct 2026)
 - [ ] In Supabase Authentication settings: Site URL https://prime60.colindesilva.com; Redirect URLs http://localhost:3000/** and https://prime60.colindesilva.com/**; custom SMTP via Resend (see docs/08-setup.md section 5)
 - [ ] Create a Railway service for `prime60` connected to the GitHub repo (Claude will give exact steps when the repo has code).
@@ -66,8 +66,8 @@ Updated: 1 October 2026 (all V1 screens built and compiling; awaiting Supabase k
 ### Phase 7 — Progress, admin, launch
 - [x] Progress dashboard
 - [x] Admin view and CSV export
-- [ ] Seed Colin's account
-- [ ] Playwright daily-journey tests on iPhone viewport (public smoke tests pass; signed-in flows need the live Supabase key)
+- [ ] Seed Colin's account (after Colin signs up and completes onboarding: `npm run db:seed-colin`)
+- [x] Playwright daily-journey tests on iPhone viewport: 8 passing (public pages, sign-in, Today, morning, evening reveal, pattern log)
 - [ ] Design refinement pass
 - [x] Developer setup guide, deployment runbook, user guide, install-on-iPhone page
 - [ ] Reset the Founding 100 counter before launch: test accounts consumed numbers. Run `npx supabase db query "update public.founding_counter set claimed = 0; update public.profiles set plan = 'early_access', founding_number = null where founding_number is not null;"` after deleting test users, then re-verify Colin so he gets number 1

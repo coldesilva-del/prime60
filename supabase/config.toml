@@ -234,15 +234,17 @@ otp_length = 6
 # Number of seconds before the email OTP expires (defaults to 1 hour).
 otp_expiry = 3600
 
-# Production SMTP via Resend. Set RESEND_API_KEY in the shell before `supabase config push`.
-[auth.email.smtp]
-enabled = true
-host = "smtp.resend.com"
-port = 465
-user = "resend"
-pass = "env(RESEND_API_KEY)"
-admin_email = "prime60@colindesilva.com"
-sender_name = "Prime 60"
+# Production SMTP via Resend. Uncomment once the Resend domain is verified, set
+# RESEND_API_KEY in the shell, then run `npx supabase config push`. Until then
+# Supabase's built-in sender is used (rate-limited; fine for a few test accounts).
+# [auth.email.smtp]
+# enabled = true
+# host = "smtp.resend.com"
+# port = 465
+# user = "resend"
+# pass = "env(RESEND_API_KEY)"
+# admin_email = "prime60@colindesilva.com"
+# sender_name = "Prime 60"
 
 # Uncomment to customize email template
 # [auth.email.template.invite]
