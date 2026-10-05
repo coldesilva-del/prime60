@@ -3,8 +3,8 @@ import { expect, test } from "@playwright/test";
 test.describe("public pages", () => {
   test("landing shows the tagline and both actions", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Build the man.");
-    await expect(page.getByRole("link", { name: "Create your account" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Now build the man.");
+    await expect(page.getByRole("link", { name: /founding place|Create your account/ }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: "Sign in" })).toBeVisible();
   });
 
