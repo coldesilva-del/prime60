@@ -16,6 +16,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           <Link href="/terms" className="hover:text-ink-soft">
             Terms
           </Link>
+          <Link href="/letter" className="hover:text-ink-soft">
+            Letter
+          </Link>
           <Link href="/install" className="hover:text-ink-soft">
             Install on iPhone
           </Link>

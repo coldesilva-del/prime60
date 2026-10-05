@@ -17,6 +17,7 @@ const links: { href: string; label: string; description: string }[] = [
   { href: "/more/identity", label: "Identity statements", description: "Who you are becoming, in your own words." },
   { href: "/more/health", label: "Health", description: "Mode, fields, targets and programme." },
   { href: "/more/account", label: "Account", description: "Profile, theme, consent, export and deletion." },
+  { href: "/more/invite", label: "Invite a friend", description: "Bring one man along. It is easier together." },
   { href: "/more/guide", label: "Guide", description: "Step-by-step help for every screen." },
   { href: "/install", label: "Install on your phone", description: "Add Prime 60 to your home screen." },
 ];

@@ -1,4 +1,5 @@
 import "server-only";
+import { connection } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 export const FOUNDING_PLACES = 100;
@@ -9,6 +10,8 @@ export const FOUNDING_PLACES = 100;
  * table is closed to every client role, so this reads it with the service role.
  */
 export async function getFoundingPlacesLeft(): Promise<number | null> {
+  // A live count: opt the calling page out of build-time prerendering.
+  await connection();
   try {
     const admin = createAdminClient();
     // founding_counter is not in the generated types: no client role can read it.

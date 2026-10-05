@@ -342,6 +342,7 @@ export const GUIDE: GuidePart[] = [
           "Your data. Tap Export my data to save a copy of everything you have entered.",
           "Delete account. This removes everything for good. You have to type DELETE to confirm.",
           "To sign out, go back to More and tap Sign out at the bottom.",
+          "Know a man who would want this? Go to More, then Invite a friend, and tap Send the invitation.",
         ],
       },
     ],

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button";
 import { FOUNDING_PLACES, getFoundingPlacesLeft } from "@/lib/founding";
@@ -196,6 +197,9 @@ export default async function LandingPage() {
           who want the same thing join as founding members.
         </p>
         <p className="text-sm text-ink-soft">Colin de Silva</p>
+        <Link href="/letter" className="inline-flex min-h-11 items-center text-base text-harbour underline-offset-4 hover:underline">
+          Read my letter to you
+        </Link>
       </section>
 
       <section className="space-y-4">
