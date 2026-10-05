@@ -78,7 +78,7 @@ export const GUIDE: GuidePart[] = [
           "Who are you becoming? Write one sentence that starts with I am a man who. Then choose how you want to track health.",
           "Tap Finish and open Today. You are in.",
         ],
-        tip: "Stuck on what to write? Tap Use this as a starting point to borrow an example, then change the words to fit you.",
+        tip: "Stuck on what to write? Tap See a worked example. There are ten for each question. Tap See another example until you find one you like, tap Use this as a starting point, then change the words to fit you.",
       },
     ],
   },

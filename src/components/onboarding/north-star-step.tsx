@@ -39,12 +39,12 @@ const COPY: Record<NorthStarStepNumber, { title: string; lede: string; label: st
 interface NorthStarStepProps {
   step: NorthStarStepNumber;
   initialBody: string;
-  example: string;
+  examples: string[];
 }
 
 const initial: ActionState = {};
 
-export function NorthStarStep({ step, initialBody, example }: NorthStarStepProps) {
+export function NorthStarStep({ step, initialBody, examples }: NorthStarStepProps) {
   const [state, action, pending] = useActionState(ACTIONS[step], initial);
   const fe = state.fieldErrors ?? {};
   const [body, setBody] = useState(initialBody);
@@ -65,7 +65,7 @@ export function NorthStarStep({ step, initialBody, example }: NorthStarStepProps
           className="[&_textarea]:font-display [&_textarea]:text-lg"
           error={fe.body}
         />
-        <ExampleBlock example={example} onUse={setBody} />
+        <ExampleBlock examples={examples} onUse={setBody} />
         <StepActions step={step} pending={pending} />
       </form>
     </StepShell>

@@ -55,6 +55,21 @@ export const NORTH_STAR_STEPS: Record<2 | 3 | 4, { section: NorthStarSection; ex
   4: { section: "relationships", exampleKey: "example_relationships" },
 };
 
+/** Worked examples offered per North Star section. */
+export const EXAMPLE_COUNT = 10;
+
+/** Snippet keys for a section: the original example, then numbered ones. */
+export function exampleKeys(base: string): string[] {
+  return [base, ...Array.from({ length: EXAMPLE_COUNT - 1 }, (_, i) => `${base}_${i + 2}`)];
+}
+
+/** The examples that exist for a section, in key order. */
+export function examplesFrom(snippets: Record<string, string | undefined>, base: string): string[] {
+  return exampleKeys(base)
+    .map((key) => snippets[key])
+    .filter((body): body is string => Boolean(body));
+}
+
 export const MIN_FOCUS = 3;
 export const MAX_FOCUS = 5;
 

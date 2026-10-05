@@ -11,13 +11,13 @@ import type { ActionState } from "@/lib/onboarding/schemas";
 interface LifestyleStepProps {
   initialLifestyle: string;
   initialMoment: string;
-  lifestyleExample: string;
-  momentExample: string;
+  lifestyleExamples: string[];
+  momentExamples: string[];
 }
 
 const initial: ActionState = {};
 
-export function LifestyleStep({ initialLifestyle, initialMoment, lifestyleExample, momentExample }: LifestyleStepProps) {
+export function LifestyleStep({ initialLifestyle, initialMoment, lifestyleExamples, momentExamples }: LifestyleStepProps) {
   const [state, action, pending] = useActionState(saveLifestyleStep, initial);
   const [skipState, skipAction, skipping] = useActionState(() => skipLifestyleStep(), initial);
   const fe = state.fieldErrors ?? {};
@@ -44,7 +44,7 @@ export function LifestyleStep({ initialLifestyle, initialMoment, lifestyleExampl
             className="[&_textarea]:font-display [&_textarea]:text-lg"
             error={fe.lifestyle}
           />
-          <ExampleBlock example={lifestyleExample} onUse={setLifestyle} summary="See a lifestyle example" />
+          <ExampleBlock examples={lifestyleExamples} onUse={setLifestyle} summary="See a lifestyle example" />
         </div>
         <div className="space-y-4">
           <TextField
@@ -58,7 +58,7 @@ export function LifestyleStep({ initialLifestyle, initialMoment, lifestyleExampl
             className="[&_textarea]:font-display [&_textarea]:text-lg"
             error={fe.moment}
           />
-          <ExampleBlock example={momentExample} onUse={setMoment} summary="See the Amalfi example" />
+          <ExampleBlock examples={momentExamples} onUse={setMoment} summary="See an example moment" />
         </div>
         <StepActions
           step={5}

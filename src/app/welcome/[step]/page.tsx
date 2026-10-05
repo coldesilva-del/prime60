@@ -25,6 +25,8 @@ import {
   NORTH_STAR_STEPS,
   STEP_TITLES,
   defaultTargetYear,
+  exampleKeys,
+  examplesFrom,
   parseStep,
   resumeStep,
   stepHref,
@@ -76,21 +78,21 @@ export default async function WelcomeStepPage({ params }: PageProps<"/welcome/[s
 
 async function NorthStar({ step, profile }: { step: 2 | 3 | 4; profile: ProfileRow }) {
   const { section, exampleKey } = NORTH_STAR_STEPS[step];
-  const [stars, snippets] = await Promise.all([getNorthStars(profile.user_id, [section]), getSnippets([exampleKey])]);
-  return <NorthStarStep step={step} initialBody={stars[section] ?? ""} example={snippets[exampleKey] ?? ""} />;
+  const [stars, snippets] = await Promise.all([getNorthStars(profile.user_id, [section]), getSnippets(exampleKeys(exampleKey))]);
+  return <NorthStarStep step={step} initialBody={stars[section] ?? ""} examples={examplesFrom(snippets, exampleKey)} />;
 }
 
 async function Lifestyle({ profile }: { profile: ProfileRow }) {
   const [stars, snippets] = await Promise.all([
     getNorthStars(profile.user_id, ["lifestyle", "moment"]),
-    getSnippets(["example_lifestyle", "example_moment"]),
+    getSnippets([...exampleKeys("example_lifestyle"), ...exampleKeys("example_moment")]),
   ]);
   return (
     <LifestyleStep
       initialLifestyle={stars.lifestyle ?? ""}
       initialMoment={stars.moment ?? ""}
-      lifestyleExample={snippets.example_lifestyle ?? ""}
-      momentExample={snippets.example_moment ?? ""}
+      lifestyleExamples={examplesFrom(snippets, "example_lifestyle")}
+      momentExamples={examplesFrom(snippets, "example_moment")}
     />
   );
 }
