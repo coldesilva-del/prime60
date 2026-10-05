@@ -53,6 +53,8 @@ async function makeUser(tag: string) {
 }
 
 async function main() {
+  // The test users claim founding numbers; remember the counter to put it back.
+  const { data: before } = await admin.from("founding_counter" as never).select("claimed").eq("id", 1).maybeSingle<{ claimed: number }>();
   const a = await makeUser("a");
   const b = await makeUser("b");
   try {
@@ -113,8 +115,10 @@ async function main() {
   } finally {
     await admin.auth.admin.deleteUser(a.id);
     await admin.auth.admin.deleteUser(b.id);
-    // Cascade removes their rows. Founding numbers consumed by test users are
-    // intentionally not returned; run this before launch, not after.
+    // Cascade removes their rows. Return the founding numbers they claimed.
+    if (before) {
+      await admin.from("founding_counter" as never).update({ claimed: before.claimed } as never).eq("id", 1);
+    }
   }
   console.log(failures === 0 ? "\nAll RLS checks passed." : `\n${failures} RLS check(s) failed.`);
   process.exit(failures === 0 ? 0 : 1);
