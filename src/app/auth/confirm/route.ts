@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import type { EmailOtpType } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
+import { publicEnv } from "@/lib/env";
 import { safeNext } from "@/lib/auth/schemas";
 
 /**
@@ -8,7 +9,10 @@ import { safeNext } from "@/lib/auth/schemas";
  * {{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=...
  */
 export async function GET(request: NextRequest) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
+  // Behind the Railway proxy request.url carries the internal host, so
+  // redirects are built from the configured public URL.
+  const origin = publicEnv.NEXT_PUBLIC_APP_URL;
   const tokenHash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = safeNext(searchParams.get("next"));

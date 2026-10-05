@@ -246,6 +246,25 @@ otp_expiry = 3600
 # admin_email = "prime60@colindesilva.com"
 # sender_name = "Prime 60"
 
+# Prime 60 branded emails. Links use the token-hash route (/auth/confirm) so
+# they work when opened on a different device or browser from the one that
+# requested them.
+[auth.email.template.confirmation]
+subject = "Confirm your email for Prime 60"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.magic_link]
+subject = "Your Prime 60 sign-in link"
+content_path = "./supabase/templates/magic_link.html"
+
+[auth.email.template.recovery]
+subject = "Reset your Prime 60 password"
+content_path = "./supabase/templates/recovery.html"
+
+[auth.email.template.email_change]
+subject = "Confirm your new email for Prime 60"
+content_path = "./supabase/templates/email_change.html"
+
 # Uncomment to customize email template
 # [auth.email.template.invite]
 # subject = "You have been invited"
