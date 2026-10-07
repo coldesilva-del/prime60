@@ -11,7 +11,7 @@ export function Wordmark({ className, href = "/" }: { className?: string; href?:
   );
   if (!href) return mark;
   return (
-    <Link href={href} aria-label="Prime 60 home" className="inline-flex">
+    <Link href={href} className="inline-flex">
       {mark}
     </Link>
   );

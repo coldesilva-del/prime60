@@ -31,8 +31,10 @@ Twenty checks Colin asked for on 7 October 2026, what was found, what was change
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Mobile | before | 81 | 96 | 100 | 91 | 2.3 s | 0 | 390 ms |
 | Desktop | before | 98 | 96 | 100 | 91 | 0.7 s | 0 | 10 ms |
-| Mobile | after | see below | | | | | | |
-| Desktop | after | see below | | | | | | |
+| Mobile | after | 81 | 100 | 100 | 100 | 2.2 s | 0 | 410 ms |
+| Desktop | after | 87 | 100 | 100 | 100 | 1.2 s | 0 | 40 ms |
+
+Accessibility, best practices and SEO are now 100 on both profiles. Performance is held back by one thing: time to first byte of 1 to 2 seconds for every request, including static files such as the favicon that never touch the application. Measured from Brisbane and from a US runner alike, so it is the network path through Railway's edge to the Singapore region, not the code. Worth testing before launch: moving the Railway service to US West (where the edge appears to terminate) and comparing, or enabling the Cloudflare proxy (orange cloud) on the DNS record. The in-app pages are unaffected once loaded because navigation is client-side.
 
 Below-threshold audits before: colour contrast (fixed), robots.txt missing (fixed), server response time (cached), speed index on mobile (fonts and JS; acceptable for a text page). Users in Australia will see better numbers than a US runner does.
 
