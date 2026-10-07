@@ -359,6 +359,7 @@ export const GUIDE: GuidePart[] = [
           "Do not want to type a password? Tap Email me a sign-in link instead.",
           "The app says a link has expired or was already used? Each link works only once and lasts one hour. Ask for a new one.",
           "No email? Check spam. Check you typed your address correctly. Then tap Send the link again.",
+          "The screen says That page is not here? The address is wrong. Tap Go to Today.",
           "The screen says You are offline? You have no internet right now. Anything you tapped is saved when you are back online.",
           "Missed a day? Nothing is lost. Open Today and carry on. Coming back is the skill.",
         ],

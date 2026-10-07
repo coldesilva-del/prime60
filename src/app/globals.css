@@ -14,11 +14,11 @@
   --surface-raised: #efede7;
   --ink: #1a1f26;
   --ink-soft: #5b636d;
-  --ink-faint: #9aa1aa;
+  --ink-faint: #646c76;
   --hairline: #e2dfd8;
   --harbour: #2e6b6e;
   --harbour-soft: #dcebeb;
-  --brass: #b9985e;
+  --brass: #866c3b;
   --ember: #a4553f;
   --shadow-sheet: 0 12px 40px rgba(10, 14, 20, 0.18);
 
@@ -63,7 +63,7 @@
   --surface-raised: #232d38;
   --ink: #eceae4;
   --ink-soft: #a4acb6;
-  --ink-faint: #68727e;
+  --ink-faint: #8c97a3;
   --hairline: #2b3641;
   --harbour: #5fa3a6;
   --harbour-soft: #1f3a3c;
@@ -207,5 +207,16 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Inline links inside prose are underlined, so they do not rely on colour alone (WCAG 1.4.1). */
+@layer base {
+  p a,
+  li a,
+  dd a,
+  figcaption a {
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
   }
 }

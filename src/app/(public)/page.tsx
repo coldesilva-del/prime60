@@ -66,6 +66,29 @@ const INCLUDED = [
   },
 ];
 
+const DAY = [
+  { when: "6:30 am", what: "Two minutes: confirm three non-negotiables, name the one thing to finish, pick one person to invest in." },
+  { when: "During the day", what: "Tap things as they happen: trained, made the call, parked a new idea, logged an old pattern. Seconds each." },
+  { when: "When stuck", what: "Four questions and a fifteen minute timer get you moving on the thing you keep avoiding." },
+  { when: "8:30 pm", what: "Three minutes: tap what happened, rate your energy, reveal your score out of 100." },
+  { when: "Sunday", what: "Fifteen minutes: the week in numbers, a few honest questions, next week's priority." },
+];
+
+const SCIENCE = [
+  { name: "Identity, not outcomes", how: "You write who you are becoming. Every daily tap is a vote for that man, so change sticks after motivation fades." },
+  { name: "Two-minute starts", how: "Every resisted task has a version small enough to begin now. Starting is the skill; finishing follows." },
+  { name: "If-then plans", how: "Each old pattern has a prepared response, decided in advance, so you are not relying on willpower in the moment." },
+  { name: "Never miss twice", how: "One miss is an event. The app measures how fast you return, not how long your streak is." },
+];
+
+const REAL_LIFE = [
+  "Miss a day and nothing resets to zero. You see one quiet line and carry on.",
+  "Change today's non-negotiables for a single morning when life gets in the way, without touching your standing ones.",
+  "Already have a coach or a programme? Switch health to the light mode and log a weekly weigh-in only.",
+  "Works in your phone's browser with no download, and installs to your home screen in three taps.",
+  "Everything you write is yours. Export it as one file or delete it all, any time.",
+];
+
 const QUESTIONS = [
   {
     q: "Is it really free?",
@@ -132,6 +155,12 @@ export default async function LandingPage() {
             Sign in
           </ButtonLink>
           <p className="text-sm text-ink-soft">{scarcity}</p>
+          <Link
+            href="/scorecard"
+            className="inline-flex min-h-11 items-center text-base text-harbour underline-offset-4 hover:underline"
+          >
+            Not sure yet? Take the one-minute scorecard
+          </Link>
         </div>
       </section>
 
@@ -169,6 +198,49 @@ export default async function LandingPage() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section className="space-y-4">
+        <Heading>What a day looks like</Heading>
+        <dl className="divide-y divide-hairline overflow-hidden rounded-[16px] bg-surface">
+          {DAY.map((item) => (
+            <div key={item.when} className="flex gap-4 px-4 py-3">
+              <dt className="w-24 shrink-0 text-sm text-ink-soft">{item.when}</dt>
+              <dd className="text-base text-ink">{item.what}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="measure text-sm text-ink-soft">
+          That is the whole day. The app never asks for more than this unless you want to log more.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <Heading>Built on how habits actually change</Heading>
+        <p className="measure text-base text-ink">
+          Prime 60 is built on the behaviour-change research popularised by James Clear in Atomic Habits, applied
+          to men in the second half of life. Four ideas do most of the work:
+        </p>
+        <ul className="space-y-3">
+          {SCIENCE.map((item) => (
+            <li key={item.name} className="measure border-l-2 border-hairline pl-4">
+              <p className="text-base font-semibold text-ink">{item.name}</p>
+              <p className="text-base text-ink-soft">{item.how}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-4">
+        <Heading>Designed for real life</Heading>
+        <ul className="space-y-3">
+          {REAL_LIFE.map((line) => (
+            <li key={line} className="measure flex gap-3 text-base text-ink">
+              <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-harbour" />
+              {line}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="space-y-5">

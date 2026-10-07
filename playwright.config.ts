@@ -14,8 +14,11 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
-    // iPhone 13 viewport, touch and user agent, run on Chromium (WebKit is not installed on Windows dev machines).
+    // Full suite on Chromium: iPhone 13 viewport, touch and user agent, then desktop.
     { name: "iphone-13", use: { ...devices["iPhone 13"], browserName: "chromium" } },
     { name: "desktop-chrome", use: { ...devices["Desktop Chrome"] } },
+    // Public pages and accessibility in the other engines (npx playwright install webkit firefox).
+    { name: "iphone-webkit", use: { ...devices["iPhone 13"] }, testMatch: /(public|a11y).spec.ts/ },
+    { name: "desktop-firefox", use: { ...devices["Desktop Firefox"] }, testMatch: /(public|a11y).spec.ts/ },
   ],
 });

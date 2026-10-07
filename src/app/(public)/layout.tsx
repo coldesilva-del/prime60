@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { PageView } from "@/components/analytics/page-view";
 import { Wordmark } from "@/components/brand/wordmark";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-dvh flex-col">
+      <PageView />
       <header className="mx-auto w-full max-w-[520px] px-5 pt-6">
         <Wordmark />
       </header>
@@ -18,6 +20,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           </Link>
           <Link href="/letter" className="hover:text-ink-soft">
             Letter
+          </Link>
+          <Link href="/scorecard" className="hover:text-ink-soft">
+            Scorecard
           </Link>
           <Link href="/install" className="hover:text-ink-soft">
             Install on iPhone

@@ -27,7 +27,7 @@ export default function PrivacyPage() {
     <article className="space-y-5">
       <div className="space-y-2">
         <h1 className="font-display text-3xl text-ink">Privacy policy</h1>
-        <p className="text-sm text-ink-soft">Effective 1 October 2026</p>
+        <p className="text-sm text-ink-soft">Effective 1 October 2026. Updated 7 October 2026.</p>
       </div>
 
       <P>
@@ -130,7 +130,10 @@ export default function PrivacyPage() {
       <H2>No advertising or analytics trackers</H2>
       <P>
         Prime 60 contains no advertising, no third-party analytics and no tracking pixels. We do not use
-        Google Analytics, Meta pixels or similar tools.
+        Google Analytics, Meta pixels or similar tools. We keep our own count of how many times each public
+        page (the front page, the letter, the scorecard and the sign-up page) is viewed each day, and which
+        website the visitor came from. That count holds no cookie, IP address, device detail or anything else
+        that could identify you.
       </P>
 
       <H2>Cookies</H2>

@@ -21,11 +21,11 @@ Named tokens. Light and dark are two tunings of the same palette, not inversions
 | surface-raised | #EFEDE7 | #232D38 | pressed states, secondary surfaces |
 | ink | #1A1F26 | #ECEAE4 | primary text |
 | ink-soft | #5B636D | #A4ACB6 | secondary text |
-| ink-faint | #9AA1AA | #68727E | tertiary text, placeholders |
+| ink-faint | #646C76 | #8C97A3 | tertiary text, placeholders |
 | hairline | #E2DFD8 | #2B3641 | 1px rules |
 | harbour | #2E6B6E | #5FA3A6 | primary accent: actions, progress, links |
 | harbour-soft | #DCEBEB | #1F3A3C | accent backgrounds |
-| brass | #B9985E | #D4B57A | reserved: Prime Self moments, score numeral, founding mark |
+| brass | #866C3B | #D4B57A | reserved: Prime Self moments, score numeral, founding mark |
 | ember | #A4553F | #D27C64 | attention: destructive confirmations, drift notes. Never for scores |
 
 Rules: brass appears at most once per screen. Progress bars use harbour only; pillars are distinguished by label and position, never by colour. Direction is shown with a glyph and a word, not a colour. Contrast meets AA for all text on all surfaces.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Group, Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import { getAdminStats } from "@/lib/admin/queries";
+import { getAdminStats, getPageViews } from "@/lib/admin/queries";
 import { formatDayShort } from "@/lib/dates";
 
 export const metadata: Metadata = { title: "Admin" };
@@ -16,7 +16,7 @@ function Stat({ label, value }: { label: string; value: number }) {
 }
 
 export default async function AdminUsersPage() {
-  const stats = await getAdminStats();
+  const [stats, pageViews] = await Promise.all([getAdminStats(), getPageViews()]);
 
   if (!stats.configured) {
     return (
@@ -63,6 +63,31 @@ export default async function AdminUsersPage() {
             ))}
           </tbody>
         </table>
+      </Section>
+
+      <Section
+        title="Public page views"
+        description="Last 30 days. Counted without cookies or identifiers; the top referring sites are shown where known."
+      >
+        {pageViews.length === 0 ? (
+          <p className="text-base text-ink-soft">No views counted yet.</p>
+        ) : (
+          <Group>
+            {pageViews.map((row) => (
+              <div key={row.path} className="space-y-1 px-4 py-3">
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="text-base text-ink">{row.path}</span>
+                  <span className="text-lg font-medium tabular-nums text-ink">{row.views}</span>
+                </div>
+                {row.topReferrers.length > 0 ? (
+                  <p className="text-sm text-ink-soft">
+                    From {row.topReferrers.map((r) => `${r.host} (${r.views})`).join(", ")}
+                  </p>
+                ) : null}
+              </div>
+            ))}
+          </Group>
+        )}
       </Section>
 
       <Section title="Mailing list" description="Members who opted in to email. Email, first name and consent date.">

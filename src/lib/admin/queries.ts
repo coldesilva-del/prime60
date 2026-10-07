@@ -87,6 +87,45 @@ export const getAdminStats = cache(async (): Promise<AdminStats> => {
   };
 });
 
+export interface PageViewRow {
+  path: string;
+  views: number;
+  topReferrers: { host: string; views: number }[];
+}
+
+/** Page views on the public pages over the last 30 days, by path, with the top referring sites. */
+export const getPageViews = cache(async (): Promise<PageViewRow[]> => {
+  let admin;
+  try {
+    admin = createAdminClient();
+  } catch {
+    return [];
+  }
+  const since = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+  const { data } = await admin
+    .from("page_views" as never)
+    .select("path, referrer_host, views")
+    .gte("day", since)
+    .returns<{ path: string; referrer_host: string; views: number }[]>();
+  const byPath = new Map<string, { views: number; refs: Map<string, number> }>();
+  for (const row of data ?? []) {
+    const entry = byPath.get(row.path) ?? { views: 0, refs: new Map<string, number>() };
+    entry.views += row.views;
+    if (row.referrer_host) entry.refs.set(row.referrer_host, (entry.refs.get(row.referrer_host) ?? 0) + row.views);
+    byPath.set(row.path, entry);
+  }
+  return [...byPath.entries()]
+    .map(([path, e]) => ({
+      path,
+      views: e.views,
+      topReferrers: [...e.refs.entries()]
+        .map(([host, views]) => ({ host, views }))
+        .sort((a, b) => b.views - a.views)
+        .slice(0, 3),
+    }))
+    .sort((a, b) => b.views - a.views);
+});
+
 export interface ConsentedRow {
   email: string;
   firstName: string;

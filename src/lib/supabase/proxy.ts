@@ -13,10 +13,18 @@ const PUBLIC_PREFIXES = [
   "/terms",
   "/install",
   "/letter",
+  "/scorecard",
   "/~offline",
   "/serwist",
   "/manifest.webmanifest",
 ];
+
+/** Signed-in areas. Anything outside these and the public list is a 404, not a sign-in redirect. */
+const APP_PREFIXES = ["/today", "/progress", "/plan", "/vision", "/more", "/welcome", "/update-password", "/api"];
+
+function isAppRoute(pathname: string) {
+  return APP_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/"));
+}
 
 function isPublic(pathname: string) {
   if (pathname === "/") return true;
@@ -58,7 +66,7 @@ export async function updateSession(request: NextRequest) {
   const signedIn = Boolean(data?.claims?.sub);
   const { pathname } = request.nextUrl;
 
-  if (!signedIn && !isPublic(pathname)) {
+  if (!signedIn && !isPublic(pathname) && isAppRoute(pathname)) {
     const url = request.nextUrl.clone();
     url.pathname = "/sign-in";
     url.searchParams.set("next", pathname);
